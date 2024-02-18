@@ -34,6 +34,7 @@ class UniTableViewCell: UITableViewCell {
         locationLabel.text = list.location
         
         logoImageView.sd_setImage(with: URL(string: list.logo), completed: nil)
+    
     }
     
 }

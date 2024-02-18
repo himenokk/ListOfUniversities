@@ -16,7 +16,9 @@ struct UniList {
     var logo = ""
     var lat = 0.0
     var long = 0.0
-    var image = ""
+    var piсture = ""
+    
+    init(){}
     
     init(json: JSON){
         
@@ -40,8 +42,8 @@ struct UniList {
             long = item
         }
         
-        if let item = json["image"].string{
-            image = item
+        if let item = json["piсture"].string{
+            piсture = item
         }
         
     }

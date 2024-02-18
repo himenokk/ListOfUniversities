@@ -8,7 +8,9 @@
 import UIKit
 import SwiftyJSON
 import MapKit
-
+import SVProgressHUD
+import Alamofire
+import SDWebImage
 
 
 class ViewController: UIViewController {
@@ -23,23 +25,38 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     
-    var list: UniList?
+    var list = UniList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        if let list = list {
+        nameLabel.text = list.name
+        locationLabel.text = list.location
+        imageView.sd_setImage(with: URL(string: list.piсture), completed: nil)
+        
+        print(list)
+        
+  
             
-            nameLabel.text = list.name
-            locationLabel.text = list.location
+            /*
+             let item = Item(name: "Example", imageURL: "https://example.com/image.jpg")
+             let imageLoader = ImageLoader()
+             imageLoader.loadImage(from: item.imageURL) { image in
+                 if let image = image {
+                     // Do something with the image
+                     print("Image loaded successfully!")
+                 } else {
+                     // Handle the case where the image couldn't be loaded
+                     print("Failed to load image.")
+                 }
+             }
+             */
             
-            if let image = UIImage(named: list.image) {
-                imageView.image = image
-            } else {
-                print("Unable to find image with name: \(list.image)") //почему-то не получается картинку вывести
-            }
-        }
+//            let listItem = UniList(json: item)
+//            self.arrayUni.append(listItem)
+       
+       
         
         //        let lat: CLLocationDegrees = list?.lat
         //        let long: CLLocationDegrees = list?.long
@@ -62,13 +79,7 @@ class ViewController: UIViewController {
         //        mapView.setRegion(MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)), animated: true)
         
             }
-        //
-        //    @IBAction func touched(_ sender: Any) {
-        //        let mapVC = storyboard?.instantiateViewController(identifier: "detailMapView") as! MapViewController
-        //
-        //        mapVC.list = list
-        //        navigationController?.show(mapVC, sender: self)
-        //}
+      
         
     
 }
